@@ -1,0 +1,179 @@
+/* load fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* universal */
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+}
+
+/* body tag (entire page */
+body {
+    background-color: #2f303a;
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+
+    min-height: 100vh;
+}
+
+/* footer */
+.main-footer {
+    background-color: #202027;
+
+    height: 60px;
+
+    font-weight: bold;
+}
+
+/* social media images */
+.social-link img {
+    width: 1em;
+
+    margin-right: 0.25rem;
+}
+
+/* container in the footer */
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* body container for entire page */
+.container {
+    max-width: 1190px;
+
+    margin: 0 auto;
+    padding: 0 40px;
+
+    flex-grow: 1;
+}
+
+.full-height-grow {
+    display: flex;
+    flex-direction: column;
+}
+
+/* header and footer */
+.main-header,
+.main-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* header */
+.main-header {
+    height: 120px;
+}
+
+/* left side of the header */
+.brand-logo {
+    display: flex;
+    align-items: center;
+
+    font-size: 1.25em;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+/* styles for the name of the app */
+.brand-logo-name {
+    margin-left: 1rem;
+}
+
+/* right side of header */
+.main-nav ul,
+.footer-nav ul {
+    display: flex;
+
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+/* link tags for nav */
+.main-nav a,
+.footer-nav a {
+    text-decoration: none;
+
+    padding: 1rem;
+
+    color: inherit;
+}
+
+/* link tags hover effect */
+.main-nav a:hover,
+.footer-nav a:hover {
+    color: #adadad;
+}
+
+.selected {
+    color: #adadad;
+}
+
+/* main title for text content */
+.title {
+    font-weight: 500;
+    font-size: 3em;
+
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+/* subtitle for the text content */
+.subtitle {
+    font-weight: 400;
+    font-size: 1.2em;
+
+    margin-bottom: 2rem;
+}
+
+/* buttons */
+.btn {
+    color: inherit;
+    background-color: #1762a7;
+
+    padding: 0.75rem 1.5rem;
+
+    border-radius: .5rem;
+    border: none;
+
+    outline: none;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+}
+
+/* button hover effect */
+.btn:hover {
+    background-color: #1a548a;
+}
+
+/* button focus */
+.btn:focus {
+    background-color: #2796ff;
+}
+
+/* red text on home page */
+.accent-text1 {
+    color: #3a81bc;
+    font-size: 1.25em;
+}
+
+/* red text on home page */
+.accent-text2 {
+    color: #BC3A80;
+    font-size: 1.25em;
+}

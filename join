@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/join.css">
+    <title>Mutone - Join</title>
+</head>
+<style>
+    /* Make circles that indicate the steps of the form: */
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+
+    .step.active {
+        opacity: 1;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+        background-color: #4CAF50;
+    }
+
+    /* Mark input boxes that gets an error on validation: */
+    input.invalid {
+        background-color: #ffdddd;
+    }
+
+    /* Hide all steps by default: */
+    .tab {
+        display: none;
+    }
+</style>
+
+<body class="full-height-grow">
+    <div class="container full-height-grow">
+        <!-- header(logo + name) and nav(different pages) -->
+        <header class="main-header">
+            <!-- left side of the header (logo and name) -->
+            <a href="/" class="brand-logo">
+                <!-- logo -->
+                <img src="/images/logo.png" alt="App Logo">
+                <!-- name -->
+                <div class="brand-logo-name">Mutone</div>
+            </a>
+
+            <!-- right side of the header (different pages) -->
+            <nav class="main-nav">
+                <ul>
+                    <li>
+                        <a href="discover.html">Discover</a>
+                    </li>
+                    <li class="selected">
+                        <a href="join.html">Join</a>
+                    </li>
+                    <li>
+                        <a href="login.html">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- section(main content of the page) -->
+        <section class="join-main-section">
+            <h1 class="join-text">
+                Join the <span class="accent-text">fun!</span>
+            </h1>
+            <form action="#" method="post" class="join-form">
+                <div class="input-group namer tab">
+                    <label for="f-name">First Name:</label><br>
+                    <input type="text" name="f-name" oninput="this.className = ''"><br>
+                    <label for="l-name">Last Name:</label><br>
+                    <input type="text" name="l-name" oninput="this.className = ''">
+                </div>
+                <div class="input-group emailer tab">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" oninput="this.className = ''">
+                </div>
+                <div class="input-group  tab">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" oninput="this.className = ''">
+                </div>
+                <!-- <div class="input-group">
+                    <button class="btn" type="submit" oninput="this.className = ''">Join Now</button>
+                </div> -->
+                <div style="overflow:auto;">
+                    <div style="float:right;">
+                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    </div>
+                </div>
+                <!-- Circles which indicates the steps of the form: -->
+                <div style="text-align:center;margin-top:40px;">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                </div>
+            </form>
+        </section>
+    </div> <!--  end tag for the content of the page -->
+
+    <footer class="main-footer">
+
+        <div class="container">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#" class="social-link">
+                            <img src="/images/twitter.svg" alt="twitter">
+                            Twitter
+                        </a></li>
+                    <li><a href="#" class="social-link">
+                            <img src="/images/facebook.svg" alt="facebook">
+                            Facebook
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <div id="circles">
+        <div class="join-page-circle-1"></div>
+        <div class="join-page-circle-2"></div>
+    </div>
+
+    <!-- JavaScript Files Upload -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+        integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
+        integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
+    <script src="/js/join.js"></script>
+
+
+    <script>
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+
+        function showTab(n) {
+            // This function will display the specified tab of the form...
+            var x = document.getElementsByClassName("tab");
+            x[n].style.display = "block";
+            //... and fix the Previous/Next buttons:
+            if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == (x.length - 1)) {
+                document.getElementById("nextBtn").innerHTML = "Submit";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "Next";
+            }
+            //... and run a function that will display the correct step indicator:
+            fixStepIndicator(n)
+        }
+
+        function nextPrev(n) {
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName("tab");
+            // Exit the function if any field in the current tab is invalid:
+            if (n == 1 && !validateForm()) return false;
+            // Hide the current tab:
+            x[currentTab].style.display = "none";
+            // Increase or decrease the current tab by 1:
+            currentTab = currentTab + n;
+            // if you have reached the end of the form...
+            if (currentTab >= x.length) {
+                // ... the form gets submitted:
+                document.getElementById("regForm").submit();
+                return false;
+            }
+            // Otherwise, display the correct tab:
+            showTab(currentTab);
+        }
+
+        function validateForm() {
+            // This function deals with validation of the form fields
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("tab");
+            y = x[currentTab].getElementsByTagName("input");
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == "") {
+                    // add an "invalid" class to the field:
+                    y[i].className += " invalid";
+                    // and set the current valid status to false
+                    valid = false;
+                }
+            }
+            // If the valid status is true, mark the step as finished and valid:
+            if (valid) {
+                document.getElementsByClassName("step")[currentTab].className += " finish";
+            }
+            return valid; // return the valid status
+        }
+
+        function fixStepIndicator(n) {
+            // This function removes the "active" class of all steps...
+            var i, x = document.getElementsByClassName("step");
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" active", "");
+            }
+            //... and adds the "active" class on the current step:
+            x[n].className += " active";
+        }
+    </script>
+</body>
+
+</html>

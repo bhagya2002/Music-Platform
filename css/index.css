@@ -1,0 +1,123 @@
+/* section tag */
+.home-main-section {
+    display: flex;
+    flex-grow: 1;
+
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+/* right right image div */
+.home-main-section .img-wrapper {
+    flex-grow: 1;
+    flex-direction: column;
+    display: flex;
+
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+/* image for the div */
+.home-main-section .lady-image {
+    background-image: url(/images/music-man.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+
+    flex-grow: 1;
+
+    max-height: 70vh;
+    min-width: 30vw;
+}
+
+/* right ride of the page the text content */
+.home-main-section .call-to-action {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    align-self: center;
+
+    margin: 1rem;
+}
+
+/* subtitle ad remove margin-top */
+.ad {
+    margin-top: -1.7rem;
+}
+
+
+/* when the size of the screen gets less than 900px */
+@media (max-width: 900px) {
+
+    /* image disappers */
+    .home-main-section .img-wrapper {
+        display: none;
+    }
+
+    /* the text content center */
+    .home-main-section {
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+/* circle 1 */
+.home-page-circle1 {
+    position: absolute;
+    bottom: 3.8vw;
+    left: 3.8vw;
+
+    width: 28vw;
+    height: 28vw;
+
+    border-radius: 50%;
+
+    background-color: rgb(52, 87, 178, 0.2);
+
+    z-index: -1;
+}
+
+/* cicle 2 */
+.home-page-circle2 {
+    position: absolute;
+    top: 5.9vw;
+    left: 33.8vw;
+
+    width: 20vw;
+    height: 20vw;
+
+    border-radius: 50%;
+
+    background-color: rgb(188, 58, 128, 0.15);
+
+    z-index: -1;
+}
+
+/* circle 3 */
+.home-page-circle3 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 44vw;
+    height: 44vw;
+
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* circle 3 before psuedo */
+.home-page-circle3::before {
+    content: "";
+
+    background-color: rgb(52, 87, 178, 0.15);
+
+    position: absolute;
+    transform: translate(20%, 30%);
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+}

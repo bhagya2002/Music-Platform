@@ -1,0 +1,125 @@
+/* section tag */
+.discover-main-section {
+    display: flex;
+    flex-grow: 1;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* section and the album covers */
+.discover-main-section .covers-image {
+    width: 30vw;
+    max-width: 350px;
+    height: auto;
+
+    margin-left: 2rem;
+}
+
+/* icon container */
+.icon-section {
+    display: flex;
+}
+
+/* icons */
+.icon {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100px;
+    height: 100px;
+
+    padding: 0.75rem;
+    margin: 0.5rem;
+    margin-bottom: 2rem;
+
+    background-color: #202027;
+
+    border-radius: 8%;
+}
+
+/* icon images */
+.icon img {
+    width: 40px;
+}
+
+/* when the size of the screen gets less than 900px */
+@media (max-width: 900px) {
+
+    /* image disappers */
+    .discover-main-section .covers-image {
+        margin-top: 2rem;
+        width: auto;
+        height: 30vh;
+    }
+
+    /* the text content center */
+    .discover-main-section {
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+/* circle 1 */
+.disc-page-circle1 {
+    position: absolute;
+    bottom: 2.0vw;
+    left: 30.8vw;
+
+
+    width: 28vw;
+    height: 28vw;
+
+    border-radius: 50%;
+
+    background-color: rgb(188, 58, 128, 0.15);
+
+    z-index: -1;
+}
+
+/* cicle 2 */
+.disc-page-circle2 {
+    position: absolute;
+    top: 4vw;
+    left: 2vw;
+
+    width: 24vw;
+    height: 24vw;
+
+    border-radius: 50%;
+
+    background-color: rgb(52, 87, 178, 0.2);
+
+    z-index: -1;
+}
+
+/* circle 3 */
+.disc-page-circle3 {
+    position: absolute;
+    bottom: 4.7vw;
+    right: 0;
+
+    width: 38vw;
+    height: 38vw;
+
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* circle 3 before psuedo */
+.disc-page-circle3::before {
+    content: "";
+
+    background-color: rgb(188, 58, 128, 0.15);
+
+    position: absolute;
+    transform: translate(20%, 30%);
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+}

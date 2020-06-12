@@ -1,0 +1,147 @@
+/* section tag */
+.join-main-section {
+    display: flex;
+    flex-grow: 1;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* left side text content */
+.join-text {
+    font-size: 3.5em;
+    font-weight: bold;
+
+    margin: 0;
+}
+
+/* special text */
+.accent-text {
+    color: #bc3a80;
+
+    font-size: 1.35em;
+}
+
+/* form */
+.join-form {
+    background-color: #202027;
+
+    width: 50vw;
+    max-width: 50%;
+
+    padding: 2rem 4rem;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* input groups */
+
+
+/* last child (button) */
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+
+/* input labels */
+.input-group label {
+    font-weight: bold;
+
+    margin-bottom: 0.5rem;
+}
+
+/* input */
+.input-group input {
+    outline: none;
+
+    background: none;
+    color: inherit;
+
+    border: 1px solid #2e3852;
+    border-radius: 5px;
+
+    padding: 0.5em;
+
+    font-size: 1em;
+}
+
+/* focus on input */
+.input-group input:focus {
+    border-color: #596da0;
+}
+
+/* when the size of the screen gets less than 900px */
+@media (max-width: 900px) {
+
+    /* image disappers */
+    .join-form {
+        margin: 2rem 0;
+
+        max-width: inherit;
+        width: 80vw;
+    }
+
+    /* the text content center */
+    .join-main-section {
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+
+.join-page-circle-1 {
+    position: absolute;
+    overflow: hidden;
+    width: 35vw;
+    height: 35vw;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.join-page-circle-1::before {
+    content: '';
+    transform: translateX(-20%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: rgb(188, 58, 128, .2);
+}
+
+.join-page-circle-2 {
+    position: absolute;
+    overflow: hidden;
+    width: 30vw;
+    height: 30vw;
+    top: 0;
+    left: 20vw;
+    z-index: -1;
+}
+
+.join-page-circle-2::before {
+    content: '';
+    transform: translateY(-30%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: rgb(52, 87, 178, .2);
+}
+
+.emailer {
+    margin-bottom: 2rem;
+    display: flex;
+
+    flex-direction: column;
+}
+
+.namer {
+    margin-bottom: 2rem;
+    display: flex;
+
+    flex-direction: column;
+}
