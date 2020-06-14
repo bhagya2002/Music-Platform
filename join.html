@@ -1,3 +1,11 @@
+<!-- <?php
+
+if(isset($_POST['signed'])) {
+	header('Location: index.html');
+}
+?> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,24 +47,58 @@
 
         <!-- section(main content of the page) -->
         <section class="join-main-section">
+
+            <!-- left content -->
             <h1 class="join-text">
-                Join the <span class="accent-text">fun!</span>
+                Start streaming <span class="accent-text">here!</span>
             </h1>
-            <form action="#" method="post" class="join-form">
-                <div class="input-group namer">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name">
+
+            <!-- right side of the section -->
+            <!-- form that sign's people up -->
+            <form action="#" method="post" class="join-form" name="signed">
+                <!-- tab 1 (first and last name) -->
+                <div class="tab">
+                    <div class="input-group">
+                        <label for="f-name">First Name:</label>
+                        <input type="text" name="f-name">
+                        <label for="l-name">Last Name:</label>
+                        <input type="text" name="l-name">
+                    </div>
                 </div>
-                <div class="input-group emailer">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email">
+
+                <!-- tab 2 (email) -->
+                <div class="tab">
+                    <div class="input-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email">
+                    </div>
                 </div>
-                <div class="input-group passer">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password">
+
+                <!-- tab 3 (password and confirm) -->
+                <div class="tab">
+                    <div class="input-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password">
+                        <label for="con-password">Comfirm Password:</label>
+                        <input type="password" name="con-password">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <button class="btn" type="submit">Join Now</button>
+
+                <!-- next and previous buttons -->
+                <div class="input-group .buttoner">
+                    <div>
+                        <button style="float: left;" class="btn" type="button" id="prevBtn"
+                            onclick="nextPrev(-1)">Previous</button>
+                        <button style="float: right" class="btn" type="button" id="nextBtn"
+                            onclick="nextPrev(1)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Circles which indicates the steps of the form: -->
+                <div style="text-align:center;margin-top:-20px;">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
                 </div>
             </form>
         </section>
@@ -71,7 +113,7 @@
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
-            <nav class="footer-nav">
+            <!-- <nav class="footer-nav">
                 <ul>
                     <li><a href="#" class="social-link">
                             <img src="/images/twitter.svg" alt="twitter">
@@ -82,7 +124,7 @@
                             Facebook
                         </a></li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
     </footer>
 
@@ -97,6 +139,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
         integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     <script src="/js/join.js"></script>
+
 </body>
 
 </html>
