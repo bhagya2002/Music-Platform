@@ -66,13 +66,60 @@
     border-radius: 5px;
 
     padding: 0.5em;
+    margin-bottom: 0.3rem;
 
     font-size: 1em;
+}
+
+/* input group last input */
+.input-group input:last-child {
+    margin-bottom: 1rem;
 }
 
 /* focus on input */
 .input-group input:focus {
     border-color: #596da0;
+}
+
+/* next and prev button */
+.input-group .buttoner {
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+/* which step is displayed */
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+    background-color: #eda8b3;
+}
+
+/* Hide all steps by default: */
+.tab {
+    display: none;
 }
 
 /* when the size of the screen gets less than 900px */
@@ -93,7 +140,7 @@
     }
 }
 
-
+/* cicle 1 */
 .join-page-circle-1 {
     position: absolute;
     overflow: hidden;
@@ -104,6 +151,7 @@
     z-index: -1;
 }
 
+/* to take circle 1 off the screen */
 .join-page-circle-1::before {
     content: '';
     transform: translateX(-20%);
@@ -114,6 +162,7 @@
     background-color: rgb(188, 58, 128, .2);
 }
 
+/* circle 2 */
 .join-page-circle-2 {
     position: absolute;
     overflow: hidden;
@@ -124,6 +173,7 @@
     z-index: -1;
 }
 
+/* circle 2 off the screen */
 .join-page-circle-2::before {
     content: '';
     transform: translateY(-30%);
