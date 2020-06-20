@@ -1,8 +1,51 @@
 <?php
+session_start();
+include('./config/db_connect.php');
 
-if(isset($_POST['submit'])) {
-    header("Location: login.php");
+$email = $pass = '';
+$errors = array('email' => '', 'pass' => '', 'check' => '');
+$formError = false;
+
+if (isset($_POST['submit'])) {
+
+    // check email
+    if (empty($_POST['email'])) {
+        $errors['email'] = 'An email is required <br>';
+    } else {
+        $email = $_POST['email'];
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'Email must be a valid email address';
+        }
+    }
+
+    // check pass
+    if (empty($_POST['pass'])) {
+        $errors['pass'] = 'A password is required <br>';
+    }
+
+    if (array_filter($errors)) {
+        // echo 'errors in the form';
+        // $formError = true;
+    } else {
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $pass = mysqli_real_escape_string($conn, $_POST['pass']);
 }
+        // create sql
+        $sql = "SELECT * FROM users WHERE inemail = '$email' AND inpass = '$pass'";
+
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0 ) {
+           
+            //  success
+                    header('Location: index.php');
+                  
+            } else {
+               // error
+            $errors['check'] = 'The email/password is incorrect.';
+            $formError = true;
+            }
+    } // end of post check
 ?>
 
 <!DOCTYPE html>
@@ -49,20 +92,23 @@ if(isset($_POST['submit'])) {
             <h1 class="join-text">
                 Effortless <span class="accent-text test">listening.</span>
             </h1>
-            <form action="login.php" method="post" class="join-form">
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="join-form">
 
                 <!-- email input -->
                 <div class="input-group emailer">
                     <label for="email">Email:</label>
-                    <input type="email" name="email">
+                    <div style="color:red; font-size:0.9em;"><?php echo $errors['email']; ?></div>
+                    <input type="email" name="email" value="<?php echo htmlspecialchars($email) ?>">
                 </div>
                 <!-- password -->
                 <div class="input-group passer">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password">
+                    <label for="pass">Password:</label>
+                    <div style="color:red;font-size:0.9em;"><?php echo $errors['pass']; ?></div>
+                    <input type="password" name="pass">
+                    <div style="color:red;font-size:0.9em;"><?php echo $errors['check']; ?></div>
                 </div>
                 <div class="input-group">
-                    <button name="submit" class="btn" type="submit">Login</button>
+                    <button name="submit" value="Login" class="btn" type="submit">Login</button>
                 </div>
             </form>
         </section>
