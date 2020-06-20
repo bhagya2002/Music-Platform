@@ -1,0 +1,25 @@
+/* section tag */
+.searcher-main-section {
+    display: flex;
+    flex-grow: 1;
+
+    justify-content: center;
+}
+
+.search {
+    width: 80%;
+}
+
+.container {
+    max-width: 1190px;
+
+    margin: 0 auto;
+    padding: 0 40px;
+
+    flex-grow: 1;
+}
+
+.full-height-grow {
+    display: flex;
+    flex-direction: column;
+}
