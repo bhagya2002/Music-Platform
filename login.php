@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
         if (mysqli_num_rows($result) > 0 ) {
            
             //  success
-                    header('Location: index.php');
+                    header('Location: searcher.html');
                   
             } else {
                // error
