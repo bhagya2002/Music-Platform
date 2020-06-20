@@ -1,8 +1,38 @@
 <?php
+session_start();
+include('config/db_connect.php');
 
-if(isset($_POST['signed'])) {
-    header('Location:login.php');
-}
+if(isset($_POST['submit'])){
+    // Fetching variables of the form which travels in URL
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $pass = $_POST['pass'];
+    $repass = $_POST['repass'];
+    
+    if($fname != " " && $lname != " " && $email != " " && $pass != " " && $repass != " "){
+        $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+        $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $pass = mysqli_real_escape_string($conn, $_POST['pass']);
+        $repass = mysqli_real_escape_string($conn, $_POST['repass']);
+    }
+
+        // create sql
+        $sql = "INSERT INTO users(fname, lname, inemail, inpass, repassword) VALUES ('$fname', '$lname', '$email', '$pass', '$repass')";
+
+
+        // save to db and check
+        if (mysqli_query($conn, $sql)) {
+            //success
+            header('Location: index.php');
+        } else {
+            // error
+            echo 'query error:' . mysqli_error($conn);
+        }
+    
+} // end of post check
+
 ?>
 
 
@@ -59,10 +89,12 @@ if(isset($_POST['signed'])) {
                 <!-- tab 1 (first and last name) -->
                 <div class="tab">
                     <div class="input-group">
-                        <label for="f-name">First Name:</label>
-                        <input type="text" name="f-name">
-                        <label for="l-name">Last Name:</label>
-                        <input type="text" name="l-name">
+                        <label for="fname">First Name:</label>
+
+                        <input type="text" name="fname">
+                        <label for="lname">Last Name:</label>
+
+                        <input type="text" name="lname">
                     </div>
                 </div>
 
@@ -70,6 +102,7 @@ if(isset($_POST['signed'])) {
                 <div class="tab">
                     <div class="input-group">
                         <label for="email">Email:</label>
+
                         <input type="email" name="email">
                     </div>
                 </div>
@@ -77,10 +110,12 @@ if(isset($_POST['signed'])) {
                 <!-- tab 3 (password and confirm) -->
                 <div class="tab">
                     <div class="input-group">
-                        <label for="password">Password:</label>
-                        <input type="password" name="password">
-                        <label for="con-password">Comfirm Password:</label>
-                        <input type="password" name="con-password">
+                        <label for="pass">Password:</label>
+
+                        <input type="password" name="pass">
+                        <label for="repass">Comfirm Password:</label>
+
+                        <input type="password" name="repass">
                     </div>
                 </div>
 
@@ -91,8 +126,8 @@ if(isset($_POST['signed'])) {
                             onclick="nextPrev(-1)">Previous</button>
                         <button style="float: right" class="btn" type="button" id="nextBtn"
                             onclick="nextPrev(1)">Next</button>
-                        <button style="float: right;display:none" class="btn" type="button" id="submited"
-                            name="signed">Sumbit</button>
+                        <button style="float: right;display:none" class="btn" type="submit" id="submited"
+                            name="submit">Sumbit</button>
 
                     </div>
                 </div>
