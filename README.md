@@ -1,2 +1,2 @@
 # Music Platform
- Online music streamig platform.
+ Online music streaming platform.
