@@ -1,2 +1,4 @@
 # Music Platform
- Online music streaming platform.
+Incomplete
+Online music streaming platform.
+UI/Ux
